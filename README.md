@@ -1,68 +1,83 @@
-## 📌 Credit Scoring Business Understanding
+ task-1-credit-risk-understanding
+# Credit Risk Probability Model for Alternative Data
 
-### 1. Basel II, Risk Measurement, and Model Interpretability
+## 10 Academy – Artificial Intelligence Mastery
 
-The Basel II Capital Accord places strong emphasis on **accurate risk measurement, transparency, and regulatory accountability**. Financial institutions are required not only to estimate credit risk reliably but also to **justify and explain** how risk estimates are produced.
+**Week 4 Challenge: Credit Risk Probability Model**
 
-In this project, this requirement directly influences our modeling approach in several ways:
-
-* Models must be **interpretable**, auditable, and reproducible.
-* Feature engineering and data transformations must be **well-documented** and traceable.
-* The rationale behind variable selection, target construction, and model choice must be clearly explained.
-
-As a result, we prioritize structured pipelines, documented assumptions, and models whose predictions can be explained to risk managers, auditors, and regulators.
+**Project Duration:** 10 Dec – 16 Dec 2025
+**Role:** Analytics Engineer – Bati Bank
 
 ---
 
-### 2. Need for a Proxy Default Variable and Associated Business Risks
+## 📌 Project Overview
 
-The dataset does not contain an explicit loan default or repayment outcome. Since supervised machine learning models require labeled targets, it is necessary to **engineer a proxy variable** that represents credit risk.
+Bati Bank is partnering with an eCommerce platform to launch a **Buy-Now-Pay-Later (BNPL)** service.
+The goal of this project is to develop a **credit risk scoring system** using alternative behavioral data to:
 
-In this project, customer behavioral data—specifically **Recency, Frequency, and Monetary (RFM) patterns**—is used to identify disengaged customers who are more likely to default. These customers are labeled as **high-risk**, while more active customers are labeled as **low-risk**.
+* Estimate the probability that a customer is high-risk
+* Support loan approval and pricing decisions
+* Enable responsible credit allocation in compliance with regulatory standards
 
-However, relying on a proxy introduces important business risks:
+The core innovation is transforming **transaction behavior** into a **predictive risk signal** using data-driven methods.
 
-* The proxy may not perfectly reflect true default behavior, leading to **label noise**.
-* Misclassification may cause the bank to **reject creditworthy customers** or **approve risky borrowers**.
-* Model predictions must therefore be interpreted as **risk indicators**, not absolute default guarantees.
+---
 
-To mitigate these risks, the proxy definition is grounded in business logic, statistically validated through clustering, and clearly documented.
+## 🧠 Task 1: Credit Scoring Business Understanding
+
+### 1. Basel II Accord and Model Interpretability
+
+The Basel II Capital Accord emphasizes **accurate risk measurement, transparency, and accountability** in credit decision-making. Financial institutions must not only predict risk but also **justify how risk estimates are produced**.
+
+In this project, Basel II principles influence the design in the following ways:
+
+* Preference for **interpretable and auditable models**
+* Clear documentation of assumptions and feature transformations
+* Reproducible pipelines for data processing and model training
+* Traceability from raw data to final predictions
+
+This ensures that the resulting credit risk model can be reviewed by regulators, auditors, and internal risk committees.
+
+---
+
+### 2. Proxy Target Variable for Credit Risk
+
+The dataset does not contain a direct label indicating whether a customer defaulted on a loan. Since supervised learning requires labeled outcomes, a **proxy credit risk variable** must be created.
+
+Customer transaction behavior—specifically **Recency, Frequency, and Monetary (RFM)** patterns—is used to identify disengaged customers. These customers are assumed to have a higher likelihood of default and are labeled as **high-risk**, while more active customers are labeled as **low-risk**.
+
+**Business risks of using a proxy variable include:**
+
+* The proxy may not perfectly represent true default behavior
+* Label noise may lead to misclassification
+* Creditworthy customers may be rejected or risky customers approved
+
+To mitigate these risks, the proxy definition is grounded in behavioral finance principles, statistically validated through clustering, and clearly documented.
 
 ---
 
 ### 3. Trade-offs Between Interpretable and High-Performance Models
 
-In a regulated financial context, there is a critical trade-off between **model interpretability** and **predictive performance**.
+In regulated financial environments, there is a fundamental trade-off between **interpretability** and **predictive performance**.
 
-**Simple, interpretable models (e.g., Logistic Regression with WoE):**
+**Interpretable models (e.g., Logistic Regression with WoE):**
 
-* Advantages:
+* Transparent and explainable
+* Easier regulatory approval
+* Clear feature-to-risk relationships
+* Limited ability to capture non-linear patterns
 
-  * High transparency and explainability
-  * Easy regulatory approval
-  * Clear linkage between features and risk
-* Limitations:
+**Complex models (e.g., Gradient Boosting):**
 
-  * Limited ability to capture non-linear relationships
-  * Potentially lower predictive power
+* Higher predictive accuracy
+* Capture complex feature interactions
+* Harder to explain and audit
+* Higher regulatory and operational risk
 
-**Complex, high-performance models (e.g., Gradient Boosting):**
+This project adopts a **comparative modeling approach**, evaluating both model types and selecting the final model based on a balance of **performance, explainability, and compliance**.
 
-* Advantages:
 
-  * Strong predictive accuracy
-  * Ability to capture complex interactions
-* Limitations:
-
-  * Reduced interpretability
-  * Higher regulatory and operational risk
-  * Increased difficulty in explaining decisions to stakeholders
-
-Given these trade-offs, this project adopts a **comparative approach**, evaluating both interpretable and complex models. Final model selection balances **performance, explainability, and regulatory compliance**, consistent with Basel II principles.
-
----
-
-### 4. Data-Driven Insights Informing Credit Risk Modeling
+### task 2. Data-Driven Insights Informing Credit Risk Modeling
 
 Exploratory Data Analysis revealed several key patterns that influence credit risk modeling decisions:
 
@@ -74,4 +89,4 @@ Exploratory Data Analysis revealed several key patterns that influence credit ri
 
 These insights ensure that the resulting credit scoring model is both **statistically sound** and **business-aligned**.
 
---
+
