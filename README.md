@@ -1,3 +1,4 @@
+ task-1-credit-risk-understanding
 # Credit Risk Probability Model for Alternative Data
 
 ## 10 Academy – Artificial Intelligence Mastery
@@ -74,4 +75,18 @@ In regulated financial environments, there is a fundamental trade-off between **
 * Higher regulatory and operational risk
 
 This project adopts a **comparative modeling approach**, evaluating both model types and selecting the final model based on a balance of **performance, explainability, and compliance**.
+
+
+### task 2. Data-Driven Insights Informing Credit Risk Modeling
+
+Exploratory Data Analysis revealed several key patterns that influence credit risk modeling decisions:
+
+* Customer transaction behavior is highly heterogeneous, requiring **customer-level aggregation** for stability.
+* Numerical transaction features exhibit strong skewness and outliers, necessitating **robust scaling or transformation**.
+* Categorical features are heavily imbalanced, motivating **category grouping or WoE encoding**.
+* Certain variables (e.g., `CountryCode`) have zero variance and are excluded.
+* The dataset contains no missing values, enabling reliable feature engineering without imputation bias.
+
+These insights ensure that the resulting credit scoring model is both **statistically sound** and **business-aligned**.
+
 
