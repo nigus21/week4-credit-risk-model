@@ -4,7 +4,7 @@ data_processing.py
 Modular functions for data exploration, preprocessing, and aggregation
 for the Credit Risk Modeling project.
 
-Author: Your Name
+Author: Nigus Dibekulu
 Date: 2025-12-25
 """
 
@@ -14,6 +14,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import logging
 from typing import List, Dict
+# from xverse.transformers import WOEEncoder
+
+use_woe=False
+
 
 # Configure logging
 logging.basicConfig(
@@ -277,7 +281,6 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler, MinMaxScaler
 from sklearn.impute import SimpleImputer
 
 # Optional: WoE encoding
-from xverse.transformers import WOEEncoder
 
 
 # ------------------------------
@@ -350,24 +353,7 @@ def create_preprocessing_pipeline(categorical_cols, numerical_cols, normalize=Fa
     return preprocessor
 
 
-# ------------------------------
-# Step 6: WoE / IV Encoding
-# ------------------------------
-def woe_encode(df, categorical_cols, target_col='is_high_risk'):
-    """
-    Encode categorical columns using Weight of Evidence (WoE)
-    Returns encoded dataframe and fitted WOEEncoder
-    """
-    df_woe = df.copy()
-    woe_enc = WOEEncoder()
-    df_woe[categorical_cols] = woe_enc.fit_transform(df_woe[categorical_cols], df_woe[target_col])
 
-    # Print IV for each column
-    print("Information Value (IV) per column:")
-    for col, iv in woe_enc.information_value_.items():
-        print(f"{col}: {iv:.4f}")
-
-    return df_woe, woe_enc
 
 
 # ------------------------------
@@ -390,10 +376,6 @@ def full_feature_engineering(df, categorical_cols, numerical_cols, customer_col=
     pipeline = create_preprocessing_pipeline(categorical_cols, numerical_cols, normalize=normalize)
     X_ready = pipeline.fit_transform(df_feat)
 
-    # Step 6: WoE encoding
-    woe_enc = None
-    if use_woe:
-        df_feat, woe_enc = woe_encode(df_feat, categorical_cols, target_col=target_col)
-        X_ready = df_feat.drop(columns=[customer_col]).values
+   
 
-    return X_ready, pipeline, woe_enc
+    return X_ready, pipeline
